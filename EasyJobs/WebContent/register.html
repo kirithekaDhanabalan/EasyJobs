@@ -1,0 +1,121 @@
+<html>
+<title>register Glad Dogs</title>
+<head>
+<style type="text/css">
+.wrapper {
+	margin-top: 80px;
+	margin-bottom: 80px;
+}
+
+.form-signin {
+	max-width: 580px;
+	padding: 15px 35px 45px;
+	margin: 0 auto;
+	background-color: #8B4513;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	text-align: center;
+	.
+	form-signin-heading
+	.checkbox
+	{
+	margin-bottom
+	:
+	30px;
+}
+
+.checkbox {
+	font-weight: bolder;
+	text-align: center;
+}
+
+.form-control {
+	position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+	@
+	include
+	box-sizing(border-box);
+	&:
+	focus
+	{
+	z-index
+	:
+	2;
+}
+
+}
+input[type="text"] {
+	margin-bottom: -1px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+	margin-bottom: 20px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+}
+.btn-block {
+	background-color: white;
+	color: black;
+}
+
+.btn-block:hover {
+	color: #8B4513;
+	background-color: #000000;
+	border-color: #53A3CD;
+}
+
+.button {
+	font-weight: 400px;
+	font-size: 18px;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div ng-app="myApp" class="wrapper"
+			ng-controller="UserControl as ctnrl">
+			<form ng-submit="ctnrl.submit()" name="myForm"
+				class="form-horizontal" method="post">
+				<h3 class="form-signin-heading">REGISTER</h3>
+				<div class="form-group">
+					<input type="text" ng-model="ctnrl.user.username" name="username"
+						id="username" tabindex="1" class="form-control"
+						placeholder="USER NAME" value="" required="true" />
+				</div>
+				<div class="form-group">
+					<input type="email" ng-model="ctnrl.user.email" name="email"
+						id="email" class="form-control" placeholder="EMAIL ADDRESS"
+						tabindex="2" required="true" />
+				</div>
+				<div class="form-group">
+					<input type="number" ng-model="ctnrl.user.phonenumber"
+						name="phonenumber" id="phonenumber" class="form-control"
+						placeholder="PHONE NUMBER" tabindex="2" required="true" />
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<div class="form-group">
+							<input type="password" ng-model="ctnrl.user.upassword"
+								name="upassword" id="upassword" class="form-control"
+								placeholder="PASSWORD" tabindex="4" required="true" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+				</div>
+				<script src="js/service/user_service.js"></script>
+				<script src="js/controller/user_controller.js"></script>
+				<script src="js/bootstrap.min.js"></script>
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>

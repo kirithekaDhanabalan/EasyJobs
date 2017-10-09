@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	 <link rel="shortcut icon" href="G:\New folder (2)\images\cut.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+h3
+{
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div ng-app="myApp" class="wrapper" ng-controller="ForumControl as ctnrl">
+			<form ng-submit="ctnrl.submit()" name="myForm" class="form-horizontal" method="post">
+<h3 class="form-signin-heading">ADD FORUM</h3>  
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtArCountact">FORUM TITLE</label>  
+  <div class="col-md-4">
+  <input id="txtArCountact" ng-model="ctnrl.forum.forumTitle" name="txtArCountact" type="text" placeholder="" required="true" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtZip">FORUM DESCRIPTION</label>  
+  <div class="col-md-4">
+  <input id="txtZip" ng-model="ctnrl.forum.forumDescription" name="txtZip" type="text" placeholder="" required="true" class="form-control input-md">
+    
+  </div>
+</div>
+
+
+<div class="col-xs-3 col-sm-3 col-md-3">
+<button class="btn btn-lg btn-primary btn-block" style="margin-left: 600px;" type="submit">Add Forum</button> 
+            </div>
+            
+            <script src="js/controller/forum_controller.js"></script>
+            <script src="js/service/forum_service.js"></script>
+				
+				
+
+</form>
+</div>
+</body>
+
+</html>

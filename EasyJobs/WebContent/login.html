@@ -1,0 +1,114 @@
+
+<html>
+<title>login GladDogs</title>
+<head>
+<style type="text/css">
+{
+background
+:
+ 
+#eee
+ 
+!
+important
+;
+	
+ 
+}
+.wrapper {
+	margin-top: 80px;
+	margin-bottom: 80px;
+}
+
+.form-signin {
+	max-width: 580px;
+	padding: 15px 35px 45px;
+	margin: 0 auto;
+	background-color: #8B4513;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	text-align: center;
+	.
+	form-signin-heading
+	.checkbox
+	{
+	margin-bottom
+	:
+	30px;
+}
+
+.checkbox {
+	font-weight: bolder;
+	text-align: center;
+}
+
+.form-control {
+	position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+	@
+	include
+	box-sizing(border-box);
+	&:
+	focus
+	{
+	z-index
+	:
+	2;
+}
+
+}
+input[type="text"] {
+	margin-bottom: -1px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+	margin-bottom: 20px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+}
+.btn-block {
+	background-color: white;
+	color: black;
+}
+
+.btn-block:hover {
+	color: #8B4513;
+	background-color: #000000;
+	border-color: #53A3CD;
+}
+
+.rememberMe {
+	font-weight: 400px;
+	font-size: 18px;
+	font-weight: bolder;
+}
+</style>
+</head>
+<body>
+	<div ng-app="myApp" class="wrapper"
+		ng-controller="UserControl as ctnrl">
+		<form ng-submit="ctnrl.login()" class="form-signin"
+			name="myForm" method="post">
+			<h3 class="form-signin-heading">LOGIN</h3>
+			<input type="text" ng-model="ctnrl.usercred.username"
+				class="form-control" name="username" placeholder="USER NAME" required="true" /> <br />
+			<input type="password" ng-model="ctnrl.usercred.upassword"
+				class="form-control" name="userpassword" placeholder="PASSWORD" required="true"/>
+			<br />
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+			<a style="margin-top: 20px;" class="btn btn-lg btn-primary btn-block"
+				href="#register">Click Here If NewUser</a>
+			<script src="js/service/user_service.js"></script>
+			<script src="js/controller/user_controller.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+
+		</form>
+	</div>
+</body>
+</html>

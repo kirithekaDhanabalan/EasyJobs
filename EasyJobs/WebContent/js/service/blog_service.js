@@ -7,10 +7,10 @@ angular.module('myApp').factory('BlogService', ['$http', '$q',function($http, $q
        
     var factory = {
     	fetchAllBlogs: fetchAllBlogs,
+    	fetchSingleBlog:fetchSingleBlog,
         createBlog: createBlog,
         updateUser:updateUser,
         deleteUser:deleteUser,
-        
     };
     return factory;
     function fetchAllBlogs()
@@ -18,6 +18,24 @@ angular.module('myApp').factory('BlogService', ['$http', '$q',function($http, $q
     	console.log("entered service");
         var deferred = $q.defer();
         $http.get(REST_SERVICE_URI)
+            .then(
+            function (response) 
+            {
+            	deferred.resolve(response.data);     
+            },
+            function(errResponse){
+                console.error('Error while fetching blogs');
+                deferred.reject(errResponse);
+            }
+        );
+        return deferred.promise;
+    } 
+    
+    function fetchSingleBlog(id)
+    {
+    	console.log("entered service  for single blog"+id);
+        var deferred = $q.defer();
+        $http.get(REST_SERVICE_URI+"/"+id)
             .then(
             function (response) 
             {
@@ -44,7 +62,7 @@ angular.module('myApp').factory('BlogService', ['$http', '$q',function($http, $q
             },
             function(errResponse)
             {
-                console.error('Error while creating User');
+                console.error('Error while creating blog');
                 deferred.reject(errResponse);
             }
         );

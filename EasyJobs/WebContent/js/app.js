@@ -32,6 +32,9 @@ App.config(function($routeProvider,$locationProvider) {
     .when("/addblog", {
         templateUrl : "addblog.html"        
     })
+     .when("/singleblog", {
+        templateUrl : "singleblog.html"        
+    })
     .when("/job", {
         templateUrl : "job.html"        
     })
@@ -47,6 +50,9 @@ App.config(function($routeProvider,$locationProvider) {
     })
     .when("/comments", {
         templateUrl : "singlepost.html"        
+    })
+    .when("/suggestedusers", {
+        templateUrl : "suggesteduser.html"        
     })
         .when("/addforum", {
         templateUrl : "addforum.html"        

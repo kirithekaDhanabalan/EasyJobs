@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+  
+</head>
+<body ng-app="myApp">
+<div class="container">
+<div  class="wrapper"
+			ng-controller="BlogControl as ctnrl" >
+			
+  <div class="well">
+        <div class="media">
+      	<a class="pull-left" href="#">
+    		<img class="media-object" src="http://placekitten.com/150/150">
+  		</a>
+  		<div class="media-body">
+    		<h4 class="media-heading">{{ctnrl.blog1.blogTitle}}</h4>
+          <p class="text-right">By{{ctnrl.blog1.blogAuthor}}</p>
+          <p>{{ctnrl.blog1.blogDescription}}</p>
+          <ul class="list-inline list-unstyled">
+  			<li type="date"><span><i class="glyphicon glyphicon-calendar"></i>{{ctnrl.blog1.createdOn |  date:"MM/dd/yyyy 'at' h:mma"}}</span></li>
+            <li>|</li>
+            <span><i class="glyphicon glyphicon-comment"></i> 5 comments</span>
+          <!--  <form ng-submit="ctnrl.readMore(b)" name="myForm" class="form-horizontal">
+				<div class="pull-right">
+					<button class="btn btn-primary btn-md" type="submit" >comment</button>
+				</div>
+			</form> -->
+			</ul>
+       </div>
+    </div>
+  </div>
+
+  </div>
+ </div>
+ <script src="js/service/blog_service.js"></script>
+ <script src="js/controller/blog_controller.js"></script>
+            
+ </body>
+  
+</html>

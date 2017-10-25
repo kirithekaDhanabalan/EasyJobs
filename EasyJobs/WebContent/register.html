@@ -83,20 +83,27 @@ input[type="password"] {
 			<form ng-submit="ctnrl.submit()" name="myForm"
 				class="form-horizontal" method="post">
 				<h3 class="form-signin-heading">REGISTER</h3>
+				
 				<div class="form-group">
+				<div class="col-xs-6 col-sm-6 col-md-6">
 					<input type="text" ng-model="ctnrl.user.username" name="username"
 						id="username" tabindex="1" class="form-control"
 						placeholder="USER NAME" value="" required="true" />
+						</div>
 				</div>
 				<div class="form-group">
+				<div class="col-xs-6 col-sm-6 col-md-6">
 					<input type="email" ng-model="ctnrl.user.email" name="email"
 						id="email" class="form-control" placeholder="EMAIL ADDRESS"
 						tabindex="2" required="true" />
+						</div>
 				</div>
 				<div class="form-group">
+				<div class="col-xs-6 col-sm-6 col-md-6">
 					<input type="number" ng-model="ctnrl.user.phonenumber"
 						name="phonenumber" id="phonenumber" class="form-control"
 						placeholder="PHONE NUMBER" tabindex="2" required="true" />
+						</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6">

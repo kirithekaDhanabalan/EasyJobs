@@ -26,7 +26,7 @@ public class Blog
 	private String BlogDescription;
 	@Column
 	private String BlogAuthor;
-	@DateTimeFormat @Temporal(value = TemporalType.DATE)
+	@Temporal(value = TemporalType.TIMESTAMP)
 	Date CreatedOn;
 	
 	

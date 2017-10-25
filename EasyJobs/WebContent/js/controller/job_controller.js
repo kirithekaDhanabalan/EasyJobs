@@ -28,17 +28,20 @@ angular
 							self.remove = remove;
 							self.reset = reset;
 							self.login = login;
-
-							function fetchAllUsers() {
-								UserService
-										.fetchAllUsers()
+							self.alljobs=alljobs;
+							
+							fetchAllJobs();
+							
+							function fetchAllJobs() {
+								JobService
+										.fetchAllJobs()
 										.then(
 												function(d) {
-													self.blogs = d;
+													self.jobs = d;
 												},
 												function(errResponse) {
 													console
-															.error('Error while fetching Users');
+															.error('Error while fetching jobs');
 												});
 							}
 
@@ -89,11 +92,18 @@ angular
 
 							}
 
-							function login() {
+						
+							function alljobs() {
+								console.log("inside all jobs");
+								fetchAllJobs();
+
+							}
+                           function login() {
 								
 								loginUser(self.usercred);
 
 							}
+
 
 							function edit(id) {
 								console.log('id to be edited', id);

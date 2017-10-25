@@ -23,17 +23,18 @@ angular
 							self.remove = remove;
 							self.reset = reset;
 							self.login = login;
-
-							function fetchAllUsers() {
-								UserService
-										.fetchAllUsers()
+							self.allforums=allforums;
+							
+							function fetchAllForums() {
+								ForumService
+										.fetchAllForums()
 										.then(
 												function(d) {
-													self.blogs = d;
+													self.forums = d;
 												},
 												function(errResponse) {
 													console
-															.error('Error while fetching Users');
+															.error('Error while fetching Forum');
 												});
 							}
 
@@ -46,7 +47,7 @@ angular
 													$window
 													.alert("The forum Added");
 														
-													var url = "http://localhost:9050/EasyJobs/#/contactus";
+													var url = "http://localhost:9050/EasyJobs/#/forum";
 													$window.location.href = url;
 												},
 												function(errResponse) {
@@ -84,6 +85,13 @@ angular
 
 							}
 
+							function allforums() {
+								console.log('he forum');
+								
+								fetchAllForums();
+
+							} 
+							
 							function login() {
 								
 								loginUser(self.usercred);

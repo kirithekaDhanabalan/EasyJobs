@@ -2,6 +2,8 @@ package com.EasyJobs.EasyJobsbd.controller;
 
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -40,7 +42,7 @@ public class UserController {
 	    
 	    //-------------------Retrieve Single User--------------------------------------------------------
 	    @GetMapping(value = "/user/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-	    public ResponseEntity<Users> getUser(@PathVariable("name") String name)
+	    public ResponseEntity<Users> getUser(@PathVariable("name") String name,HttpSession session)
 	    {
 	        System.out.println("Fetching User with name " + name);
 	        Users user = userService.findByName(name);
@@ -57,7 +59,7 @@ public class UserController {
 	    
 	    //-------------------Create a User--------------------------------------------------------
 	    @RequestMapping(value = "/user", method = RequestMethod.POST)
-	    public ResponseEntity<String> createUser(@RequestBody Users user)
+	    public ResponseEntity<String> createUser(@RequestBody Users user,HttpSession session)
 	    {
 	        System.out.println("Creating User " + user.getUsername()+"  "+user.getUsername());
 	        if(!userService.isUserExist(user.getUsername()))
@@ -75,7 +77,7 @@ public class UserController {
 	    
 	    //------------------- Update a User --------------------------------------------------------
 	    @RequestMapping(value = "/user/{name}", method = RequestMethod.PUT)
-	    public ResponseEntity<Users> updateUser(@PathVariable("name") String name, @RequestBody Users user)
+	    public ResponseEntity<Users> updateUser(@PathVariable("name") String name, @RequestBody Users user,HttpSession session)
 	    {
 	    	System.out.println("Fetching & updating User with name " + name);
 	  	    Users currentuser = userService.findByName(name);
@@ -109,11 +111,12 @@ public class UserController {
 	    
 	  //------------------- login --------------------------------------------------------
 		@RequestMapping(value = "/login", method = RequestMethod.POST)
-		   public ResponseEntity<String> Login(@RequestBody UserCredentials user)
+		   public ResponseEntity<String> Login(@RequestBody UserCredentials user,HttpSession session)
 		   {
 			System.out.println(user.getUsername()+"  "+user.getUpassword());
 		       if(userService.check(user.getUsername(),user.getUpassword()))
 		       {
+		    	   session.setAttribute("username", user.getUsername());
 		    	
 		    	  return new ResponseEntity<String>(HttpStatus.OK);
 		       }
@@ -122,5 +125,12 @@ public class UserController {
 			       	return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		       }
 		   } 
-	   
-}
+		//------------------- logout --------------------------------------------------------
+		@RequestMapping(value = "/logout", method = RequestMethod.GET)
+		public ResponseEntity<String> Logout(HttpSession session)
+ {
+	 session.invalidate();
+	 return new ResponseEntity<String>(HttpStatus.OK);
+ }
+
+}	

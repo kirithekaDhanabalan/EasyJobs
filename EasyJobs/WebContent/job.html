@@ -1,39 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href='//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'
+	rel='stylesheet' />
+<style>
+.single {
+	padding: 30px 15px;
+	margin-top: 40px;
+	background: #fcfcfc;
+	border: 1px solid #f0f0f0;
+}
+
+.single h3.side-title {
+	margin: 0;
+	margin-bottom: 10px;
+	padding: 0;
+	font-size: 20px;
+	color: #333;
+	text-transform: uppercase;
+}
+
+.single h3.side-title:after {
+	content: '';
+	width: 60px;
+	height: 1px;
+	background: #ff173c;
+	display: block;
+	margin-top: 6px;
+}
+
+.single ul {
+	margin-bottom: 0;
+}
+
+.single li a {
+	color: #666;
+	font-size: 14px;
+	text-transform: uppercase;
+	border-bottom: 1px solid #f0f0f0;
+	line-height: 40px;
+	display: block;
+	text-decoration: none;
+}
+
+.single li a:hover {
+	color: #ff173c;
+}
+
+.single li:last-child a {
+	border-bottom: 0;
+}
+</style>
 </head>
-<body>
-<div class="container">
-<div ng-app="myApp" class="wrapper"
-			ng-controller="JobControl as ctnrl">
-			<form ng-submit="ctnrl.submit()" name="myForm" class="form-horizontal" method="post">
-  <div class="well">
-      <div class="media">
-      	<a class="pull-left" href="#">
-    		<img class="media-object" src="http://placekitten.com/150/150">
-  		</a>
-  		<div class="media-body">
-    		<h4 class="media-heading">Receta 1</h4>
-          <p class="text-right">By Francisco</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-          <ul class="list-inline list-unstyled">
-  			<li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
-            <li>|</li>
-            <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
-           
-			</ul>
-       </div>
-    </div>
-  </div>
-</div>
+<body ng-app="myApp">
+	<div class="container">
+		<div class="column" ng-controller="JobControl as ctnrl"
+			ng-init="ctnrl.alljobs()">
+			<div class=""col-xs-12 col-sm-12 col-md-4 col-lg-4"">
+				<!-- Category -->
+				<div class="single category" ng-repeat="j in ctnrl.jobs">
+					<h3 class="side-title">{{j.jobTitle}}</h3>
+					<ul class="list-unstyled">
+					    <li><a href="" title="">ExperienceRequired <span class="pull-right">{{j.experienceRequired}}</span></a></li>
+						<li><a href="" title="">Company Name<span class="pull-right">{{j.companyName}}</span></a></li>
+						<li><a href="" title="">JobDescription <span
+								class="pull-right">{{j.jobDescription}}</span></a></li>
+						<li><a href="" title="">JobSkillsRequired <span
+								class="pull-right">{{j.jobSkillsRequired}}</span></a></li>
+						<li><a href="" title="">JobLocation <span
+								class="pull-right">{{j.jobLocation}}</span></a></li>
+						<li><a href="" title="">SalaryPerMonth<span class="pull-right">{{j.salaryPerMonth }}</span></a></li>
+						<li><a href="" title="">ExperienceRequired <span class="pull-right">{{j.experienceRequired}}</span></a></li>		
+						</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="container box">
+		<div class="row" ng-controller="JobControl as ctnrl" ng-init="ctnrl.alljobs()">
+			<div class="col-xs-12 col-sm-6 col-md-3 rwrapper">
+				<div class="rlisting" ng-repeat="j in ctnrl.jobs">
+					<div class="col-md-12 nopad">
+						<h2>{{j.companyName}}</h2>
+						<p>{{j.jobDescription}}</p>
+						<p>{{j.jobSkillsRequired}}</p>
+						<p>{{j.jobLocation}}</p>
+						<p>{{j.experienceRequired}}</p>
+						<div class="rfooter">
+							<i class="fa fa-phone-square">{{j.salaryPerMonth}}</i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<script src="js/controller/job_controller.js"></script>
+	<script src="js/service/job_service.js"></script>
+</body>
 </html>

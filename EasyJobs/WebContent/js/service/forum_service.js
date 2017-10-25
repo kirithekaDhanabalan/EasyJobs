@@ -6,14 +6,14 @@ angular.module('myApp').factory('ForumService', ['$http', '$q',function($http, $
     
        
     var factory = {
-        fetchAllUsers: fetchAllUsers,
+        fetchAllForums: fetchAllForums,
         createForum: createForum,
         updateUser:updateUser,
         deleteUser:deleteUser,
         
     };
     return factory;
-    function fetchAllUsers()
+    function fetchAllForums()
     {
         var deferred = $q.defer();
         $http.get(REST_SERVICE_URI)
@@ -23,7 +23,7 @@ angular.module('myApp').factory('ForumService', ['$http', '$q',function($http, $
             	deferred.resolve(response.data);            	
             },
             function(errResponse){
-                console.error('Error while fetching Users');
+                console.error('Error while fetching Forum');
                 deferred.reject(errResponse);
             }
         );

@@ -6,14 +6,14 @@ angular.module('myApp').factory('JobService', ['$http', '$q',function($http, $q)
     
        
     var factory = {
-        fetchAllUsers: fetchAllUsers,
+        fetchAllJobs: fetchAllJobs,
         createJob: createJob,
         updateUser:updateUser,
         deleteUser:deleteUser,
         
     };
     return factory;
-    function fetchAllUsers()
+    function fetchAllJobs()
     {
         var deferred = $q.defer();
         $http.get(REST_SERVICE_URI)
@@ -23,7 +23,7 @@ angular.module('myApp').factory('JobService', ['$http', '$q',function($http, $q)
             	deferred.resolve(response.data);            	
             },
             function(errResponse){
-                console.error('Error while fetching Users');
+                console.error('Error while fetching Jobs');
                 deferred.reject(errResponse);
             }
         );

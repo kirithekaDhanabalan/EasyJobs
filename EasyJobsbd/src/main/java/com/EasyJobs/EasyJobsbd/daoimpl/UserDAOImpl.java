@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import java.util.List;
 import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 
@@ -109,6 +110,25 @@ public class UserDAOImpl implements UserDAO {
 			return true;
 		} else
 			return false;
+	}
+
+	public List<Users> usersExceptLoggedIn(String username) {
+		// TODO Auto-generated method stub
+		List<Users> suggestedUsers=null;
+		try {
+			Session s = sessionFactory.openSession();
+			Transaction tx = s.getTransaction();
+			tx.begin();
+			Criteria c=s.createCriteria(Users.class);
+			c.add(Restrictions.ne("username", username));
+			suggestedUsers=c.list();
+			tx.commit();
+			s.close();
+			return suggestedUsers;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return suggestedUsers;
+		}
 	}
 
 }

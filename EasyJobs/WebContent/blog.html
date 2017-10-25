@@ -3,24 +3,40 @@
 <head>
 	<title></title>
 	<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  
 </head>
 <body ng-app="myApp">
 <div class="container">
 <div  class="wrapper"
 			ng-controller="BlogControl as ctnrl">
 			
-  <div class="well" ng-repeat="b in ctnrl.fetchAllBlogs().allblogs">
-      <h2>hello</h2>
+  <div class="well" ng-repeat="b in ctnrl.blogs" >
+        <div class="media">
+      	<a class="pull-left" href="#">
+    		<img class="media-object" src="http://placekitten.com/150/150">
+  		</a>
+  		<div class="media-body">
+    		<h4 class="media-heading">{{b.blogTitle}}</h4>
+          <p class="text-right">By{{b.blogAuthor}}</p>
+          <p>{{b.blogDescription}}</p>
+          <ul class="list-inline list-unstyled">
+  			<li type="date"><span><i class="glyphicon glyphicon-calendar"></i>{{b.createdOn |  date:"MM/dd/yyyy 'at' h:mma"}}</span></li>
+            <li>|</li>
+            <span><i class="glyphicon glyphicon-comment"></i> 5 comments</span>
+           <form ng-submit="ctnrl.readMore(b.blogId)" name="myForm" class="form-horizontal">
+				<div class="pull-right">
+					<button class="btn btn-primary btn-md" type="submit" >comment</button>
+				</div>
+			</form>
+			</ul>
+       </div>
+    </div>
   </div>
- 
-</div>
+
+  </div>
  </div>
+ <script src="js/service/blog_service.js"></script>
+ <script src="js/controller/blog_controller.js"></script>
  </body>
-  <script src="js/controller/blog_controller.js"></script>
-            <script src="js/service/blog_service.js"></script>
+  
 </html>

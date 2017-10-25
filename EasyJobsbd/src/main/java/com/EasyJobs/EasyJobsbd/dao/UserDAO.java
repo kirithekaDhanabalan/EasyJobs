@@ -24,4 +24,6 @@ public interface UserDAO
    public boolean isUserExist(String name);
    
    public boolean check(String name,String Password);
+   
+   public List<Users> usersExceptLoggedIn(String username);
 }

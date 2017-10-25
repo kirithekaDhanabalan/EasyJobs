@@ -70,6 +70,8 @@ public class BlogController {
 			System.out.println("Blog With Id " + id + " not found");
 			return new ResponseEntity<Blog>(HttpStatus.NOT_FOUND);
 		} else {
+			
+			System.out.println(blog.getBlogId()+"    "+blog.getBlogName());
 			return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 		}
 	}
